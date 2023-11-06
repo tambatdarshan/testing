@@ -1,0 +1,43 @@
+schemaVersion: 2.2.0
+metadata:
+  name: react-demo
+components:
+  - name: tools
+    container:
+      image: quay.io/devfile/universal-developer-image:ubi8-3e021c5
+      memoryLimit: 3Gi
+      mountSources: true
+  - name: runtime
+    container:
+      image: registry.access.redhat.com/ubi8/nodejs-16:latest
+      args: ['tail', '-f', '/dev/null']
+      memoryLimit: 1024Mi
+      endpoints:
+        - name: http-node
+          targetPort: 3000
+          exposure: public
+commands:
+  - id: install
+    exec:
+      component: runtime
+      commandLine: yarn install
+      workingDir: ${PROJECT_SOURCE}
+      group:
+        kind: build
+        isDefault: true
+  - id: run
+    exec:
+      component: runtime
+      commandLine: yarn start
+      workingDir: ${PROJECT_SOURCE}
+      group:
+        kind: run
+        isDefault: true
+  - id: test
+    exec:
+      component: runtime
+      commandLine: yarn test
+      workingDir: ${PROJECT_SOURCE}
+      group:
+        kind: test
+        isDefault: true
