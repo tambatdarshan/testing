@@ -2,11 +2,11 @@ schemaVersion: 2.2.0
 metadata:
   name: react-demo
 components:
-     - name: tools
-       container:
-        image: quay.io/devspaces/udi-rhel8:latest
-        environment:
-         - name: QUARKUS_HTTP_HOST
-           value: 0.0.0.0
-         - name: KUBEDOCK_ENABLED
-           value: 'true'
+  - name: tools
+    container:
+     image: quay.io/devspaces/udi-rhel8:3.9
+     environment:
+      - name: QUARKUS_HTTP_HOST
+        value: 0.0.0.0
+      - name: KUBEDOCK_ENABLED
+        value: 'true'
