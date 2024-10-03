@@ -9,4 +9,4 @@ components:
       - name: QUARKUS_HTTP_HOST
         value: 0.0.0.0
       - name: KUBEDOCK_ENABLED
-        value: 'true'
+        value: 'false'
