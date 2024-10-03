@@ -7,8 +7,8 @@ components:
       image: quay.io/devfile/universal-developer-image:ubi8-3e021c5
       memoryLimit: 3Gi
       mountSources: true
-   - name: KUBEDOCK_ENABLED
-     value: 'true'    
+  - name: KUBEDOCK_ENABLED
+    value: 'true'    
   - name: runtime
     container:
       image: registry.access.redhat.com/ubi8/nodejs-16:latest
