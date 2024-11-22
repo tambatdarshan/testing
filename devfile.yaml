@@ -4,7 +4,7 @@ metadata:
 components:      
   - name: tools
     container:
-      image: registry.access.redhat.com/ubi8@sha256:d497966ce214138de5271eef321680639e18daf105ae94a6bff54247d8a191a3
+      image: registry.redhat.io/ubi8/ubi-minimal:8.10-1130
 commands:
   - id: python-pkg-install
     exec:
