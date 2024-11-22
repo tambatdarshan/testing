@@ -4,7 +4,7 @@ metadata:
 components:      
   - name: tools
     container:
-      image: quay.io/devfile/universal-developer-image:ubi8-latest
+      image: registry.access.redhat.com/ubi8@sha256:d497966ce214138de5271eef321680639e18daf105ae94a6bff54247d8a191a3
 commands:
   - id: python-pkg-install
     exec:
