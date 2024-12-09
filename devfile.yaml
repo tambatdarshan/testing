@@ -5,12 +5,3 @@ components:
   - name: tools
     container:
       image: registry.redhat.io/devspaces/udi-rhel8:latest
-commands:
-  - id: python-pkg-install
-    exec:
-      component: tools
-      commandLine: python -m pip install cloud_authorizer_rosa-0.1.0.tar.gz awscli
-      workingDir: /projects/leeslb-rosa-config
-events:
-  postStart:
-  - python-pkg-install
