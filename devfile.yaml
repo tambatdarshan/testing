@@ -1,7 +1,15 @@
 schemaVersion: 2.1.0
 metadata:
-  name: dxc-tests
-components:      
+  name: beepio
+projects:
+  - name: whatif
+components:
   - name: tools
     container:
       image: registry.redhat.io/devspaces/udi-rhel8:latest
+      endpoints:
+        - exposure: public
+          name: nodejs
+          protocol: http
+          targetPort: 9001
+      memoryLimit: 8000Mi
