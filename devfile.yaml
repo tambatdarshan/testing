@@ -1,8 +1,6 @@
 schemaVersion: 2.1.0
 metadata:
   name: beepio
-projects:
-  - name: whatif
 components:
   - name: tools
     container:
@@ -12,4 +10,5 @@ components:
           name: nodejs
           protocol: http
           targetPort: 9001
+
       memoryLimit: 8000Mi
