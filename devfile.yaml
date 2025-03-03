@@ -1,14 +1,23 @@
 schemaVersion: 2.1.0
 metadata:
-  name: beep
+  name: with_sleep
 components:
   - name: tools
     container:
       image: registry.redhat.io/devspaces/udi-rhel8:latest
-      endpoints:
-        - exposure: public
-          name: nodejs
-          protocol: http
-          targetPort: 9001
-
-      memoryLimit: 8000Mi
+      mountSources: true
+      env:
+        - name: KUBEDOCK_ENABLED
+          value: 'true'
+commands:
+  - id: sleep
+    exec:
+      commandLine: sleep 50
+      component: tools
+      workingDir: /
+      group:
+        kind: run
+        isDefault: true
+events:
+  postStart:
+    - sleep
