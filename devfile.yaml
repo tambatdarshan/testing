@@ -12,6 +12,7 @@ components:
 commands:
   - id: sleep
     exec:
+      commandLine: sleep 50
       component: tools
       workingDir: /
       group:
