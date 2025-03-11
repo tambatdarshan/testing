@@ -10,9 +10,15 @@ components:
         - name: KUBEDOCK_ENABLED
           value: 'true'
 commands:
-  - id: sleep
+  - id: start-kubedock
     exec:
-      commandLine: sleep 50
+      commandLine: |
+        until kubectl get pods -n $(kubectl get ns | grep workspace | awk '{print $1}') &>/dev/null; do
+          echo "Waiting for workspace to be ready..."
+          sleep 2
+        done
+        echo "Starting Kubedock..."
+        /kubedock server --host=0.0.0.0 --port=2475
       component: tools
       workingDir: /
       group:
@@ -20,4 +26,4 @@ commands:
         isDefault: true
 events:
   postStart:
-    - sleep
+    - start-kubedock 
