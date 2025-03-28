@@ -1,29 +1,12 @@
-schemaVersion: 2.0.0
+schemaVersion: 2.2.0
 metadata:
-  name: with_sleep
+  name: empty-frar
+  namespace: test-devspaces
 components:
-  - name: tools
-    container:
-      image: registry.redhat.io/devspaces/udi-rhel8:latest
-      mountSources: true
+  - container:
       env:
-        - name: KUBEDOCK_ENABLED
-          value: 'true'
-commands:
-  - id: start-kubedock
-    exec:
-      commandLine: |
-        until kubectl get pods -n $(kubectl get ns | grep workspace | awk '{print $1}') &>/dev/null; do
-          echo "Waiting for workspace to be ready..."
-          sleep 2
-        done
-        echo "Starting Kubedock..."
-        /kubedock server --host=0.0.0.0 --port=2475
-      component: tools
-      workingDir: /
-      group:
-        kind: run
-        isDefault: true
-events:
-  postStart:
-    - start-kubedock 
+        - name: NODE_EXTRA_CA_CERTS
+          value: "/etc/pki/tls/certs/ca-bundle.crt"
+      image: image-registry.openshift-image-registry.svc:5000/767516-devspaces/udi:test
+      sourceMapping: /projects
+    name: tools
